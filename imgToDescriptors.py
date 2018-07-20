@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib
 from matplotlib.patches import Rectangle
+import matplotlib.pyplot as plt
 from dlib_models import download_model, download_predictor, load_dlib_models
 download_model()
 download_predictor()
@@ -23,6 +24,8 @@ def imgToDescriptors(img_array, name=None):
         else:
             name_arrays.append(None)
             des_arrays.append(descriptor)
+
+    print(len(detections))
     return (name_arrays, des_arrays, detections)
     
         
