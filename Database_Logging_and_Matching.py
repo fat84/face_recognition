@@ -28,11 +28,8 @@ def log_in_database(name, face):
             
             #If the person's name is already in the dictionary, then append the descriptor to the end of the value as part of a list.
             if name in names_and_faces.keys():
+                names_and_faces[name].append(face)
 
-                if len(names_and_faces[name]) == 1:
-                    names_and_faces[name] = [names_and_faces[name], face]
-                else:
-                    names_and_faces[name] = [*names_and_faces[name], face]
             #If the person's name is not in the dictionary, make a new dictionary entry.
             else:
                 names_and_faces[name] = [face]
@@ -62,7 +59,7 @@ def match_against_database(list_of_face_vectors):
 
     """
 
-    threshold_of_similarity = 0.24
+    threshold_of_similarity = 0.6
     list_of_names = []
 
     #Load the database, if it exists.
