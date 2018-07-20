@@ -23,6 +23,6 @@ def imgToDescriptors(img_array, name=None):
         else:
             name_arrays.append(None)
             des_arrays.append(descriptor)
-    return (name_arrays, des_arrays)
+    return (name_arrays, des_arrays, detections)
     
         
