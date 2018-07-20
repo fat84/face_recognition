@@ -44,6 +44,6 @@ def reset():
 
 
 #cameraToStorage("Vedantha")
-cameraToMatch()
+#cameraToMatch()
 #seeDictionaryEntry("Big V")
 #reset()
