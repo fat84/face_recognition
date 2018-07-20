@@ -110,7 +110,7 @@ def match_against_database(list_of_face_vectors):
                 if type(most_common_name) == str:
                     list_of_names.append(most_common_name)
                 else:
-                    list_of_names.append(None)
+                    list_of_names.append('None')
 
             return list_of_names
 
