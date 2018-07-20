@@ -27,5 +27,17 @@ def imgToDescriptors(img_array, name=None):
 
     print(len(detections))
     return (name_arrays, des_arrays, detections)
+
+
+
+
+
+
+
+
+
+
+
+
     
-        
+
