@@ -140,11 +140,12 @@ def L2_dists(x, y):
         numpy.ndarray, shape=(D,)
             The Euclidean distance between each pair of
             rows between `x` and `y`."""
-
+    print(x.shape)
+    print(y.shape)
     dists = -2 * np.matmul(x, y.T)
     dists +=  np.sum(x**2)[np.newaxis]
     dists += np.sum(y**2)
-    return  np.sqrt(dists)[0]
+    return  np.sqrt(dists)
 
 
 def invert_dictionary(dictionary):
