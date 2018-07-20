@@ -4,7 +4,7 @@ from face_recognition import imgToDescriptors
 from pathlib import Path
 import pickle
 import numpy as np
-import plot_rect
+from face_recognition import plot_rect
 
 
 def cameraToStorage(name):
