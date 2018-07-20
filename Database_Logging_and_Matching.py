@@ -86,6 +86,13 @@ def match_against_database(list_of_face_vectors):
                     print(names_and_faces[key].shape)
                     temp_L2diffs[key] = L2_dists(list_of_face_vectors[i], names_and_faces[key])
 
+                arrayOfDists = np.array(temp_L2diffs.values())
+                arrayOfValues = np.array(names_and_faces.keys())
+
+                person = arrayOfValues[np.argmin(arrayOfDists)] if np.min(arrayOfDists) < threshold_of_similarity else "IDK LOL"
+
+                list_of_names.append(person)
+              
                 #Invert dictionary so L2 diffs become keys.
                 inverted_dictionary = invert_dictionary(temp_L2diffs)
 
@@ -100,6 +107,7 @@ def match_against_database(list_of_face_vectors):
 
                 #Compile a list of candidate names from the inverted dictionary values.
                 list_of_candidate_names = [invert_dictionary[x] for x in numerical_keys]
+               
 
                 #Make a Counter object so that we can find the most frequent name.
                 collection_of_names = collections.Counter(list_of_candidate_names)
@@ -140,7 +148,7 @@ def L2_dists(x, y):
     dists = -2 * np.matmul(x, y.T)
     dists +=  np.sum(x**2)[np.newaxis]
     dists += np.sum(y**2)
-    return  np.sqrt(dists)
+    return  np.sqrt(dists)[0]
 
 
 def invert_dictionary(dictionary):
