@@ -80,8 +80,10 @@ def match_against_database(list_of_face_vectors):
             candidates = L2_dists_vectorized(face_vectors, faces)
             
             minimum_indices = np.argmin(candidates, axis = 1)
+            print("candidates are", candidates)
+            minimum_args = np.min(candidates, axis = 1)
             names_to_return = names[minimum_indices]
-            names_to_return[minimum_indices > threshold_of_similarity] = "IDK LOL"
+            names_to_return[minimum_args > threshold_of_similarity] = "IDK LOL"
 
             print(names_to_return.shape)
           
