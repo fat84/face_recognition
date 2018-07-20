@@ -1,6 +1,6 @@
-import EncodeImage
-import Database_Logging_and_Matching
-import imgToDescriptors
+from face_recognition import EncodeImage
+from face_recognition import Database_Logging_and_Matching
+from face_recognition import imgToDescriptors
 from pathlib import Path
 import pickle
 import numpy as np
