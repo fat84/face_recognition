@@ -94,33 +94,33 @@ def match_against_database(list_of_face_vectors):
                 list_of_names.append(person)
               
                 #Invert dictionary so L2 diffs become keys.
-                inverted_dictionary = invert_dictionary(temp_L2diffs)
+                #inverted_dictionary = invert_dictionary(temp_L2diffs)
 
                 #Make the keys a list.
-                numerical_keys = list(inverted_dictionary.keys())
+                #numerical_keys = list(inverted_dictionary.keys())
 
                 #Make the keys a numpy array.
-                numerical_keys = np.array(numerical_keys)
+                #numerical_keys = np.array(numerical_keys)
 
                 #Filter keys only for ones lower than the threshold of similarity.
-                numerical_keys = numerical_keys[numerical_keys <= threshold_of_similarity]
+                #numerical_keys = numerical_keys[numerical_keys <= threshold_of_similarity]
 
                 #Compile a list of candidate names from the inverted dictionary values.
-                list_of_candidate_names = [invert_dictionary[x] for x in numerical_keys]
+                #list_of_candidate_names = [invert_dictionary[x] for x in numerical_keys]
                
 
                 #Make a Counter object so that we can find the most frequent name.
-                collection_of_names = collections.Counter(list_of_candidate_names)
-                most_common_name = collection_of_names[0][0]
+                #collection_of_names = collections.Counter(list_of_candidate_names)
+                #most_common_name = collection_of_names[0][0]
                  
                 #If there is no decisive name, then None will be returned. 
                 #Otherwise, the most likely name corresponding to the face vector will be returned.
                 #The order of the list_of_face_vectors and list_of_names are the same, 
                 #so list_of_face_vectors[0] corresponds to list_of_names[0].
-                if type(most_common_name) == str:
-                    list_of_names.append(most_common_name)
-                else:
-                    list_of_names.append('None')
+                #if type(most_common_name) == str:
+                 #   list_of_names.append(most_common_name)
+                #else:
+                 #   list_of_names.append('None')
 
             return list_of_names
 
