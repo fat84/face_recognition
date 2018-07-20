@@ -74,12 +74,14 @@ def match_against_database(list_of_face_vectors):
 
             #Here comes the fun part! Iterate thru our list of face vectors to find the best candidate name for each face vector.
             face_vectors = np.array(list_of_face_vectors)
+            print(face_vectors.shape)
             names = np.array(list(names_and_faces.keys()))
             faces = np.array(list(names_and_faces.values()))
             candidates = L2_dists_vectorized(face_vectors, faces)
+            candidates = candidates[candidates < threshold_of_similarity]
             minimum_indices = np.argmin(candidates, axis = 0)
             names_to_return = names[minimum_indices]
-            
+            print(names_to_return.shape)
           
 
 
