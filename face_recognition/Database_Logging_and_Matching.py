@@ -77,7 +77,9 @@ def match_against_database(list_of_face_vectors):
             names = np.array(list(names_and_faces.keys()))
             faces = np.array(list(names_and_faces.values()))
             candidates = L2_dists_vectorized(face_vectors, faces)
-            minimum_indices = np.argmin(candidates, axis = 0)
+            print(candidates.shape)
+            minimum_indices = np.argmin(candidates, axis = 1)
+            print(minimum_indices.shape)
             names_to_return = names[minimum_indices]
             
           
