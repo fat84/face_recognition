@@ -41,9 +41,3 @@ def reset():
         names_and_faces = {}
         pickle.dump(names_and_faces, opened_file)
         print("Reset Dictionary")
-
-
-#cameraToStorage("Vedantha")
-cameraToMatch()
-#seeDictionaryEntry("Big V")
-#reset()
