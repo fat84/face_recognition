@@ -82,6 +82,10 @@ def match_against_database(list_of_face_vectors):
 
                 #Compute the L2 distances for each face vector.
                 for key in names_and_faces:
+                    print(i)
+                    print(key)
+                    print(list_of_face_vectors[i].shape)
+                    print(names_and_faces[key].shape)
                     temp_L2diffs[key] = L2_dists(list_of_face_vectors[i], names_and_faces[key])
 
                 #Invert dictionary so L2 diffs become keys.
