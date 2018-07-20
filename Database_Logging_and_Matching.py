@@ -35,11 +35,11 @@ def log_in_database(name, face):
                     names_and_faces[name] = [*names_and_faces[name], face]
             #If the person's name is not in the dictionary, make a new dictionary entry.
             else:
-                names_and_faces[name] = face
+                names_and_faces[name] = [face]
     #If there is no dictionary, make a new dictionary.
     else:
         names_and_faces = {}
-        names_and_faces[name] = face
+        names_and_faces[name] = [face]
     
     #Save the dictionary.
     with open(file_path/"names_and_faces.pkl", mode = "wb") as opened_file:
@@ -73,6 +73,7 @@ def match_against_database(list_of_face_vectors):
             #Calculate the mean for each key.
             for key in names_and_faces:
                 names_and_faces[key] = np.array(names_and_faces[key]).mean(axis = 0)
+
 
             #Here comes the fun part! Iterate thru our list of face vectors to find the best candidate name for each face vector.
             for i in range(len(list_of_face_vectors)):
