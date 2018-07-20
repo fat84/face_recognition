@@ -66,7 +66,7 @@ def match_against_database(list_of_face_vectors):
     list_of_names = []
 
     #Load the database, if it exists.
-    if file_path/"names_and_faces.pkl".exists():
+    if (file_path/"names_and_faces.pkl").exists():
         with open(file_path/"names_and_faces.pkl", mode = "rb") as opened_file:
             names_and_faces = pickle.load(opened_file)
 
