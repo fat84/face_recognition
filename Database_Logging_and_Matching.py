@@ -16,7 +16,7 @@ def log_in_database(name, face):
         The descriptor for the face. Typically shape (128,).
     """
     #Check if the names and faces pickle exists.
-    if file_path/"names_and_faces.pkl".exists():
+    if (file_path/"names_and_faces.pkl").exists():
 
         #Load the pickled dictionary.
         with open(file_path/"names_and_faces.pkl", mode = "rb") as opened_file:
