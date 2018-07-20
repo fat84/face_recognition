@@ -25,7 +25,7 @@ def cameraToMatch():
 
     names = Database_Logging_and_Matching.match_against_database(des_arrays)
 
-    plot_rect.plot_rect(img)
+    plot_rect.plot_rect(img, names)
 
     print(names)
 
