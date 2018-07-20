@@ -22,7 +22,7 @@ class Profile:
         Parameters:
         face: numpy.ndarray
         """
-        self.array_of_descriptors = self.array_of_descriptors.append(face)
+        self.array_of_descriptors.append(face)
 
     def return_mean_descriptor(self):
         """
