@@ -11,7 +11,7 @@ face_detect = models["face detect"]
 face_rec_model = models["face rec"]
 shape_predictor = models["shape predict"]
 
-def plot_rect(img):
+def plot_rect(img, names=[]):
     detections = list(face_detect(img))
     
     fig,ax = plt.subplots()
@@ -21,3 +21,4 @@ def plot_rect(img):
         x1, y1, x2, y2, w, h = d.left(), d.top(), d.right() + 1, d.bottom() + 1, d.width(), d.height()
         face = patches.Rectangle((x1, y1), w, h, fill=None, lw=1, color=(1, 1, 1))
         ax.add_patch(face)
+        plt.text(x1, y1, names[i], color=(1, 1, 1))
