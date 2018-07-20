@@ -11,7 +11,30 @@ face_rec_model = models["face rec"]
 shape_predictor = models["shape predict"]
 
 def imgToDescriptors(img_array, name=None):
+    des_arrays = []
+    name_arrays = []
     detections = list(face_detect(img_array))
-    shape = shape_predictor(img_array, detections[0])
-    descriptor = np.array(face_rec_model.compute_face_descriptor(img_array, shape))
-    return (name, descriptor)
+    for i in range(len(detections)):
+        shape = shape_predictor(img_array, detections[i])
+        descriptor = np.array(face_rec_model.compute_face_descriptor(img_array, shape))
+        if name is not None:
+            name_arrays.append(name)
+            des_arrays.append(descriptor)
+        else:
+            name_arrays.append(None)
+            des_arrays.append(descriptor)
+    return (name_arrays, des_arrays, detections)
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
