@@ -59,7 +59,7 @@ def match_against_database(list_of_face_vectors):
 
     """
 
-    threshold_of_similarity = 0.6
+    threshold_of_similarity = 0.4
     list_of_names = []
 
     #Load the database, if it exists.
@@ -80,14 +80,10 @@ def match_against_database(list_of_face_vectors):
 
                 #Compute the L2 distances for each face vector.
                 for key in names_and_faces:
-                    print(i)
-                    print(key)
-                    print(list_of_face_vectors[i].shape)
-                    print(names_and_faces[key].shape)
                     temp_L2diffs[key] = L2_dists(list_of_face_vectors[i], names_and_faces[key])
 
-                arrayOfDists = np.array(temp_L2diffs.values())
-                arrayOfValues = np.array(names_and_faces.keys())
+                arrayOfDists = np.array(list(temp_L2diffs.values()))
+                arrayOfValues = list(names_and_faces.keys())
 
                 person = arrayOfValues[np.argmin(arrayOfDists)] if np.min(arrayOfDists) < threshold_of_similarity else "IDK LOL"
 
