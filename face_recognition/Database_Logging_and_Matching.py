@@ -73,27 +73,30 @@ def match_against_database(list_of_face_vectors):
 
 
             #Here comes the fun part! Iterate thru our list of face vectors to find the best candidate name for each face vector.
-            array_of_face_vectors = np.array(list_of_face_vectors)
-            list_of_names = [names_and_faces.keys()]
-            array_of_faces = np.array(list(names_and_faces.values()))
-            array_of_candidates = L2_dists_vectorized(array_of_face_vectors, array_of_faces)
-
+            face_vectors = np.array(list_of_face_vectors)
+            names = np.array([names_and_faces.keys()])
+            faces = np.array(names_and_faces.values())
+            candidates = L2_dists_vectorized(face_vectors, faces)
+            minimum_indices = np.argmin(candidates, axis = 0)
+            names_to_return = array_of_names[minimum_indices]
+            
+          
 
 
 
             #Temporary L2 differences dictionary, to be cleared each iteration (i.e. each time a new face vector is introduced).
-            temp_L2diffs = {}
+            #temp_L2diffs = {}
 
             #Compute the L2 distances for each face vector.
-            for key in names_and_faces:
-                temp_L2diffs[key] = L2_dists(list_of_face_vectors[i], names_and_faces[key])
+            #for key in names_and_faces:
+                #temp_L2diffs[key] = L2_dists(list_of_face_vectors[i], names_and_faces[key])
 
-            arrayOfDists = np.array(list(temp_L2diffs.values()))
-            arrayOfValues = list(names_and_faces.keys())
+            #arrayOfDists = np.array(list(temp_L2diffs.values()))
+            #arrayOfValues = list(names_and_faces.keys())
 
-            person = arrayOfValues[np.argmin(arrayOfDists)] if np.min(arrayOfDists) < threshold_of_similarity else "IDK LOL"
+            #person = arrayOfValues[np.argmin(arrayOfDists)] if np.min(arrayOfDists) < threshold_of_similarity else "IDK LOL"
 
-            list_of_names.append(person)
+            #list_of_names.append(person)
               
             #Invert dictionary so L2 diffs become keys.
             #inverted_dictionary = invert_dictionary(temp_L2diffs)
@@ -124,7 +127,7 @@ def match_against_database(list_of_face_vectors):
             #else:
                 #   list_of_names.append('None')
 
-            return list_of_names
+            return names_to_return
 
 
     else:
@@ -154,7 +157,7 @@ def L2_dists(x, y):
     return  np.sqrt(dists)
 
 def L2_dists_vectorized(x, y):
-        """ Computing pairwise distances using memory-efficient
+    """ Computing pairwise distances using memory-efficient
         vectorization.
 
         Parameters
