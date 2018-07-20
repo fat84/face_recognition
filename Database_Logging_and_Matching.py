@@ -15,6 +15,10 @@ def log_in_database(name, face):
     face: numpy.ndarray
         The descriptor for the face. Typically shape (128,).
     """
+    #FIX: Curtain name array and face array to the first element of each respective array.
+    name = name[0]
+    face = face[0]
+
     #Check if the names and faces pickle exists.
     if (file_path/"names_and_faces.pkl").exists():
 
