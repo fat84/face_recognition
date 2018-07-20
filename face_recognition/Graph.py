@@ -1,4 +1,4 @@
-from Node import Node
+from face_recognition.Node import Node
 from collections import Counter
 
 class Graph:

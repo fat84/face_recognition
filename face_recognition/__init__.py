@@ -1,10 +1,12 @@
 from face_recognition import EncodeImage
 from face_recognition import Database_Logging_and_Matching
 from face_recognition import imgToDescriptors
+from face_recognition import UnsupervisedClassify
 from pathlib import Path
 import pickle
 import numpy as np
 from face_recognition import plot_rect
+import time
 
 
 def cameraToStorage(name):
@@ -41,3 +43,20 @@ def reset():
         names_and_faces = {}
         pickle.dump(names_and_faces, opened_file)
         print("Reset Dictionary")
+
+def classify(imgs):
+    vectors = []
+    for img in range(imgs):
+        print("Taking image in 1 seconds")
+        time.sleep(1)
+        n_img = EncodeImage.take_picture()
+        names, descriptions, rects = imgToDescriptors.imgToDescriptors(n_img)
+        print(len(descriptions[0]))
+        vectors.append(descriptions[0])
+        print("Took image")
+    dists = UnsupervisedClassify.computeDists(vectors, imgs)
+    graph = UnsupervisedClassify.createGraph(dists, .45)
+    graph = UnsupervisedClassify.finalizeLabels(graph)
+
+    for node in graph.nodes:
+        print("ID: ", node.ID, "  Label: ", node.label)
