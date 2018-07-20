@@ -54,13 +54,13 @@ def match_against_database(list_of_face_vectors):
 
     Returns
     -------
-    list_of_names:
+    names_to_return:
         The list of most likely faces corresponding to the list of face vectors.
 
     """
 
     threshold_of_similarity = 0.4
-    list_of_names = []
+
 
     #Load the database, if it exists.
     if (file_path/"names_and_faces.pkl").exists():
@@ -74,11 +74,11 @@ def match_against_database(list_of_face_vectors):
 
             #Here comes the fun part! Iterate thru our list of face vectors to find the best candidate name for each face vector.
             face_vectors = np.array(list_of_face_vectors)
-            names = np.array([names_and_faces.keys()])
-            faces = np.array(names_and_faces.values())
+            names = np.array(list(names_and_faces.keys()))
+            faces = np.array(list(names_and_faces.values()))
             candidates = L2_dists_vectorized(face_vectors, faces)
             minimum_indices = np.argmin(candidates, axis = 0)
-            names_to_return = array_of_names[minimum_indices]
+            names_to_return = names[minimum_indices]
             
           
 
