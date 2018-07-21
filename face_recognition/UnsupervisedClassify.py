@@ -12,10 +12,12 @@ def computeDists(vectors, n):
     output : array of shape (M,M) of all the distances
 
     '''
-    if type(vectors[0]) != np.ndarray:
+    if type(vectors) != np.ndarray:
         vectors = np.array(vectors)
+    print(type(vectors))
     x = vectors.reshape(n, 128)
     y = vectors.reshape(n, 128)
+
     dists = -2 * np.matmul(x, y.T)
     dists +=  np.sum(x**2, axis=1)[:, np.newaxis]
     dists += np.sum(y**2, axis=1)
@@ -48,5 +50,5 @@ def createGraph(dists, threshold_similarity):
 
 def finalizeLabels(graph):
     for i in range(1000):
-        graph.update()
+        graph.updateGraph()
     return graph

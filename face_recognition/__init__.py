@@ -46,6 +46,7 @@ def reset():
 
 def classify(imgs):
     vectors = []
+    
     for img in range(imgs):
         print("Taking image in 1 seconds")
         time.sleep(1)
@@ -58,5 +59,5 @@ def classify(imgs):
     graph = UnsupervisedClassify.createGraph(dists, .45)
     graph = UnsupervisedClassify.finalizeLabels(graph)
 
-    for node in graph.nodes:
+    for node in graph.nodes.values():
         print("ID: ", node.ID, "  Label: ", node.label)
